@@ -1,18 +1,16 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 
-
-type Gps = {
+type GpsAndConditions = {
     latitude: number 
     longitude: number
-    weatherData: any
+    weatherData: any 
     temp: number 
     wind: number
     description: string
     humidity: number
 }
 
-export default class UserPosition extends React.Component< {}, Gps >  {
+export default class UserPosition extends React.Component< {}, GpsAndConditions >  {
     constructor(props: {}) {
         super(props)
         this.state = {
@@ -72,7 +70,8 @@ export default class UserPosition extends React.Component< {}, Gps >  {
                     <button onClick={this.weatherCheck}><h1>Click Here to Check the Weather Where You Are</h1></button>
                     <br/>
                     <div>
-                    {this.state.description? <h3>{this.state.description}</h3> : "Or just look outside" }
+                    <br/>
+                    {this.state.description? <h3>{this.state.description}</h3> : "" }
                     {this.state.temp? <h3>Temp: { (this.state.temp / 6.44).toFixed(0)}</h3> : ""}
                     {this.state.wind? <h3>Wind Speed: {this.state.wind} MPH</h3> : "" }
                     {this.state.humidity? <h3>Humidity: {this.state.humidity} %</h3> : "" }
